@@ -1,5 +1,6 @@
 class SoftwareEngineer:
-    def __init__(self, name: str) -> None:
+    def __init__(self, name: str, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
         self.name = name
         self.skills: list[str] = []
 
@@ -8,8 +9,8 @@ class SoftwareEngineer:
 
 
 class FrontendDeveloper(SoftwareEngineer):
-    def __init__(self, name: str) -> None:
-        super().__init__(name)
+    def __init__(self, name: str, *args, **kwargs) -> None:
+        super().__init__(name, *args, **kwargs)
         self.skills += ["JavaScript", "HTML", "CSS"]
 
     def create_awesome_web_page(self) -> str:
@@ -18,8 +19,8 @@ class FrontendDeveloper(SoftwareEngineer):
 
 
 class BackendDeveloper(SoftwareEngineer):
-    def __init__(self, name: str) -> None:
-        super().__init__(name)
+    def __init__(self, name: str, *args, **kwargs) -> None:
+        super().__init__(name, *args, **kwargs)
         self.skills += ["Python", "SQL", "Django"]
 
     def create_powerful_api(self) -> str:
@@ -28,8 +29,8 @@ class BackendDeveloper(SoftwareEngineer):
 
 
 class AndroidDeveloper(SoftwareEngineer):
-    def __init__(self, name: str) -> None:
-        super().__init__(name)
+    def __init__(self, name: str, *args, **kwargs) -> None:
+        super().__init__(name, *args, **kwargs)
         self.skills += ["Java", "Android studio"]
 
     def create_smooth_mobile_app(self) -> str:
@@ -40,7 +41,6 @@ class AndroidDeveloper(SoftwareEngineer):
 class FullStackDeveloper(BackendDeveloper, FrontendDeveloper):
     def __init__(self, name: str) -> None:
         super().__init__(name)
-        self.skills = list(dict.fromkeys(self.skills))
 
     def create_web_application(self) -> None:
         print(f"{self.name} started creating a web application...")
